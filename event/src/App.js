@@ -8,10 +8,6 @@ const weatherKey = '6f40b22dbaa376a1572c23c064335bc5';
 //const accessToken = 'Bfh98sVa9jZRULfeE4I78zPzjzMUON';
 
 class App extends React.Component {
-	state = {
-		title: undefined,
-		error: undefined
-	}
 
 	constructor(props){
 		super(props);
@@ -41,10 +37,6 @@ class App extends React.Component {
 		});
 		const data = await apiCall.json();
 		console.log(data);
-		this.setState({
-			title:
-		})
-
 	}
 
 	  render(){
