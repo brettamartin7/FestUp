@@ -5,8 +5,8 @@ class infoPage extends React.Component {
 	  render(){
 	    return(
 	      <div>
-	      	<h1>Second Page</h1>
 	      	<Navigate/>
+	      	<h1>Second Page</h1>
 	      </div>
 	      );
 	  }
