@@ -4,9 +4,8 @@ import {NavLink} from "react-router-dom"
 const Navigate = () =>{ //arrow func
 	return (
 		<div>
-			<NavLink to="/">Home</NavLink>
-			<br/>
-			<NavLink to="/info">Info</NavLink>
+			<p><NavLink to="/">Home</NavLink></p>
+			<p><NavLink to="/info">Info</NavLink></p>
 		</div>
 	);
 }

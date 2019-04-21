@@ -11,7 +11,8 @@ import Navigate from "./Navigate"
 class homePage extends React.Component {
 	state = {
 		titles: [],
-		showMessage: false
+		showEvents: false,
+		showError: false
 	}
 
 	constructor(props){
@@ -43,27 +44,33 @@ class homePage extends React.Component {
 		const data = await apiCall.json();
 		//console.log(locationData);
 		//console.log(data);
-
-		this.setState({
+		if(city === '' || state === ''){
+			this.setState({showError: true, showEvents: false})
+		}
+		else{
+			this.setState({
 			titles: [] //clear array
-		})
+			})
 
-		let updated = [data.results[0].title,
-			data.results[1].title,
-			data.results[2].title,
-			data.results[3].title,
-			data.results[4].title,
-			data.results[5].title,
-			data.results[6].title,
-			data.results[7].title,
-			data.results[8].title,
-			data.results[9].title
-			]
+			let updated = [data.results[0].title,
+				data.results[1].title,
+				data.results[2].title,
+				data.results[3].title,
+				data.results[4].title,
+				data.results[5].title,
+				data.results[6].title,
+				data.results[7].title,
+				data.results[8].title,
+				data.results[9].title
+				]
 
-		this.setState({
-			titles: this.state.titles.concat(updated), //update array
-			showMessage: true
-		})
+			this.setState({
+				titles: this.state.titles.concat(updated), //update array
+				showEvents: true,
+				showError: false
+			})
+		}
+		
 	}
 
 	
@@ -71,10 +78,11 @@ class homePage extends React.Component {
 	  render(){
 	    return(
 	      <div>
-	      	<Navigate/>
+	      	<Navigate/> 
 	        <Titles/>
 	        <Forms getEvents={this.getEvents}/>
-	        { this.state.showMessage && (<Fest titles={this.state.titles}/>)}
+	        { this.state.showEvents && (<Fest titles={this.state.titles}/>)}
+	        { this.state.showError && (<p>Please Enter a City/State</p>)}
 	      </div>
 	      );
 	  }
