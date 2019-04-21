@@ -28,6 +28,8 @@ class infoPage extends React.Component {
 	      	{this.props.location.state.defined && (<p> Event Title: {this.props.location.state.data.results[this.props.location.state.event].title} </p>)}
 	      	{this.props.location.state.defined && (<p> Description: {desc} </p>)}
 	      	{this.props.location.state.defined && (<p> Start Time: {this.props.location.state.data.results[this.props.location.state.event].start} </p>)}
+	      	{this.props.location.state.defined && (<p> Still need to add location and format the start time better ^^^^^^^^^^^^^^^^^^^^^ </p>)}
+	      	{this.props.location.state.defined && (<p> Also need to add weather and music </p>)}
 	      	{!(this.props.location.state.defined) && (<p> Please return to the homepage and search for an event first!</p>)}
 	      </div>
 	      );
