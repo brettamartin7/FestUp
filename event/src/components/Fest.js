@@ -3,18 +3,28 @@ import { Redirect } from "react-router-dom"
 
 class Fest extends React.Component{
 	state = {
-		toInfo: false
+		toInfo: false,
+		num: undefined
 	}
 
 	getInfo(num){
 		this.setState({
-			toInfo: true
+			toInfo: true,
+			num: num
 		})
 	}
 
 	renderRedirect(){
+		let num = this.state.num;
 		if(this.state.toInfo){	
-			return <Redirect to='/info'/>
+			return <Redirect
+			  to={{
+			    pathname: "/info",
+			    state: { event: num,
+			    	data: this.props.data
+			     }
+			  }}
+			/>
 		}
 	}
 

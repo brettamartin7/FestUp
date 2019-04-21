@@ -11,6 +11,7 @@ import Navigate from "./Navigate"
 class homePage extends React.Component {
 	state = {
 		titles: [],
+		data: undefined,
 		showEvents: false,
 		showError: false
 	}
@@ -45,11 +46,13 @@ class homePage extends React.Component {
 		//console.log(locationData);
 		//console.log(data);
 		if(city === '' || state === ''){
-			this.setState({showError: true, showEvents: false})
+			this.setState({showError: true, showEvents: false, data: data})
+
 		}
 		else{
 			this.setState({
-			titles: [] //clear array
+			titles: [], //clear array
+			data: data
 			})
 
 			let updated = [data.results[0].title,
@@ -81,7 +84,7 @@ class homePage extends React.Component {
 	      	<Navigate/> 
 	        <Titles/>
 	        <Forms getEvents={this.getEvents}/>
-	        { this.state.showEvents && (<Fest titles={this.state.titles}/>)}
+	        { this.state.showEvents && (<Fest titles={this.state.titles} data={this.state.data}/>)}
 	        { this.state.showError && (<p>Please Enter a City/State</p>)}
 	      </div>
 	      );
