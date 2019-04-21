@@ -21,7 +21,8 @@ class Fest extends React.Component{
 			  to={{
 			    pathname: "/info",
 			    state: { event: num,
-			    	data: this.props.data
+			    	data: this.props.data,
+			    	defined: true
 			     }
 			  }}
 			/>
