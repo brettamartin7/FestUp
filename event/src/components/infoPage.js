@@ -1,5 +1,6 @@
 import React from "react"
 import Navigate from "./Navigate"
+import Player from "./Player"
 
 
 
@@ -7,7 +8,7 @@ class infoPage extends React.Component {
 	constructor(props){
 		super(props);
 	}
-	
+
 	  render(){
 	  	let desc;
 	  	if(this.props.location.state.defined === false){
@@ -19,7 +20,7 @@ class infoPage extends React.Component {
 	  			desc = "No description provided";
 	  		}
 	  	}
-	  	
+
 	    return(
 
 	      <div>
@@ -31,10 +32,11 @@ class infoPage extends React.Component {
 	      	{this.props.location.state.defined && (<p> Still need to add location and format the start time better ^^^^^^^^^^^^^^^^^^^^^ </p>)}
 	      	{this.props.location.state.defined && (<p> Also need to add weather and music </p>)}
 	      	{!(this.props.location.state.defined) && (<p> Please return to the homepage and search for an event first!</p>)}
+			<Player/>
 	      </div>
 	      );
 	  }
-	  
+
 };
 
 
