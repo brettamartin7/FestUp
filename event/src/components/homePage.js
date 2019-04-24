@@ -3,10 +3,18 @@ import Titles from "./Titles"
 import Fest from "./Fest"
 import Forms from "./Forms"
 import Navigate from "./Navigate"
+import Background from "./FestUp_Background.png"
+
 
 //const weatherKey = '6f40b22dbaa376a1572c23c064335bc5';
 //const clientSecret = 'MVKtEJFja5ZaTHIg3TDcTF3adv1x1IlopKx4Kwg3';
 //const accessToken = 'Bfh98sVa9jZRULfeE4I78zPzjzMUON';
+
+var sectionStyle = {
+	width: "100%",
+	height: "800px",
+	backgroundImage: `url(${Background})`
+}
 
 class homePage extends React.Component {
 	state = {
@@ -15,6 +23,7 @@ class homePage extends React.Component {
 		showEvents: false,
 		showError: false
 	}
+
 
 	constructor(props){
 		super(props);
@@ -81,11 +90,13 @@ class homePage extends React.Component {
 	  render(){
 	    return(
 	      <div>
-	      	<Navigate/> 
+					<section style = {sectionStyle} >
+					<Navigate/> 
 	        <Titles/>
 	        <Forms getEvents={this.getEvents}/>
 	        { this.state.showEvents && (<Fest titles={this.state.titles} data={this.state.data}/>)}
 	        { this.state.showError && (<p>Please Enter a City/State</p>)}
+					</section>
 	      </div>
 	      );
 	  }
