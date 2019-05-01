@@ -43,7 +43,6 @@ class Fest extends React.Component{
 					{(this.props.data.count > 6) &&<li onClick={() => this.getInfo(5)}>{this.props.titles[5]}</li>}
 					{(this.props.data.count > 7) &&<li onClick={() => this.getInfo(6)}>{this.props.titles[6]}</li>}
 					{(this.props.data.count > 8) &&<li onClick={() => this.getInfo(7)}>{this.props.titles[7]}</li>}
-					{(this.props.data.count > 9) &&<li onClick={() => this.getInfo(8)}>{this.props.titles[8]}</li>}
 				</ul>
 				{this.props.data.count === 0 && <p className="title-container__subtitle"> Sorry. No events match your search. </p>}
 			</div>

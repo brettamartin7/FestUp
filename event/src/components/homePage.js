@@ -146,22 +146,25 @@ class homePage extends React.Component {
 	    return(
 	      <div>
 	        <div className="wrapper">
-	        	<div className="main">
-	        	<Navigate/> 
-	        		<div className="container">
-	        			<div className="row">
-	        					<Titles/>
+	          <div className="main">
+	          <Navigate/>
+	            <div className="container">
+	              <div className="row">
+	                <div className="col-xs-5 title-container">
+	                  			<Titles/>
 	        					<p className= "title-container__subtitle">Search by Location:</p>
 						        <Forms getEvents={this.getEvents}/>
-						        <br/>
 						        <p className= "title-container__subtitle">Search by Event Title:</p>
 						        <FormsTwo getEventsTitle={this.getEventsTitle}/>
-						        { this.state.showEvents && (<Fest titles={this.state.titles} data={this.state.data}/>)}
-						        { this.state.showErrorLocation && (<p>Please Enter a City/State</p>)}
-						        { this.state.showErrorTitle && (<p>Please Enter an Event Title</p>)}
-	        			</div>
-	        		</div>
-	        	</div>
+	                </div>
+	                <div className="col-xs-7 form-container">
+	                  				{ this.state.showEvents && (<Fest titles={this.state.titles} data={this.state.data}/>)}
+							        { this.state.showErrorLocation && (<p>Please Enter a City/State</p>)}
+							        { this.state.showErrorTitle && (<p>Please Enter an Event Title</p>)}
+	                </div>
+	              </div>
+	            </div>
+	          </div>
 	        </div>
 	      </div>
 	      );
@@ -170,5 +173,3 @@ class homePage extends React.Component {
 
 export default homePage;
 
-
-	
