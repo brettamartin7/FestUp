@@ -10,7 +10,7 @@ export class MapC extends React.Component{
 		return(
 			
 				<div>
-					<Map google={this.props.google} zoom={14} initialCenter= {{lat: lat, lng: lng}} style={{width: '500px', height: '500px', position: 'relative'}}>
+					<Map google={this.props.google} zoom={14} initialCenter= {{lat: lat, lng: lng}} style={{width: '300px', height: '300px', position: 'relative'}}>
 					<Marker position={{lat: lat, lng: lng}}/>
 			    	</Map>
 				</div>
