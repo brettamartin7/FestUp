@@ -14,7 +14,6 @@ class Weather extends React.Component {
         window.addEventListener("unhandledrejection", function (event) {
             event.preventDefault();
         });
-        console.log(this.state.uri);
         const weatherCall = await fetch(this.state.uri, {
             headers: {
                 'Access-Control-Allow-Origin' : "localhost:3000",//'*',
@@ -22,14 +21,12 @@ class Weather extends React.Component {
             //mode: "no-cors",
             dataType: "json"
         });
-        console.log(weatherCall);
         const weatherData = await weatherCall.json();
         this.setState({
-            weather: weatherData,
+            weather: weatherData,//currently not setting value
             showWeather: true,
         });
-        console.log(weatherData);
-
+        console.log(weatherData)
     }
 
     constructor(props){
@@ -43,8 +40,9 @@ class Weather extends React.Component {
         this.state = {
             lat: lat1,
             lng: lng1,
-            uri: 'https://api.darksky.net/forecast/' + key + "/" + lng1 + "," + lat1,// + excludes,
+            uri: 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/' + key + "/" + lng1 + "," + lat1,// + excludes,
             showWeather: false,
+            weather: null,
         };
 
         this.getWeather();
@@ -53,9 +51,9 @@ class Weather extends React.Component {
     render(){
         return(
             <div>
-            <h1>{this.props.location.state.data.results[this.props.i].location[0]}, {this.props.location.state.data.results[this.props.i].location[1]}</h1>
-            <h2>{this.state.weather}</h2>
-            <h3>Powered by Dark Sky</h3>
+                <h2 className = "weather">Weather</h2>
+                {this.state.showWeather && (<p>{this.state.weather.daily.summary}</p>)}
+                <h3>Powered by Dark Sky</h3>
             </div>
         );
     }
