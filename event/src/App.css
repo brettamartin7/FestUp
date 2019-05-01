@@ -23,16 +23,6 @@ body {
   margin: 0 auto;
 }
 
-.title-container {
-  height: 90vh;
-  background: url("/components/FestUp_Bacground.png") center center no-repeat;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #000;
-}
 
 .title-container__title {
   font-size: 50px;

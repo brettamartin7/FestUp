@@ -143,10 +143,7 @@ class homePage extends React.Component {
 	        	<Navigate/> 
 	        		<div className="container">
 	        			<div className="row">
-	        				<div className=".col-xs-5.title-container">
 	        					<Titles/>
-	        				</div>
-	        				<div className=".col-xs-5.title-container">
 	        					<p className= "title-container__subtitle">Search by Location:</p>
 						        <Forms getEvents={this.getEvents}/>
 						        <br/>
@@ -155,7 +152,6 @@ class homePage extends React.Component {
 						        { this.state.showEvents && (<Fest titles={this.state.titles} data={this.state.data}/>)}
 						        { this.state.showErrorLocation && (<p>Please Enter a City/State</p>)}
 						        { this.state.showErrorTitle && (<p>Please Enter an Event Title</p>)}
-	        				</div>
 	        			</div>
 	        		</div>
 	        	</div>

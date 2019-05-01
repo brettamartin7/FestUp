@@ -54,15 +54,13 @@ class infoPage extends React.Component {
 	        	<Navigate/> 
 	        		<div className="container">
 	        			<div className="row">
-	        				<div className=".col-xs-5.title-container">
-	        					<h1 className= "title-container__title">Event Information</h1>
-						      	{this.props.location.state.defined && (<p className= "title-container__subtitle"> Event Title: {this.props.location.state.data.results[this.props.location.state.event].title} </p>)}
-						      	{this.props.location.state.defined && !pm &&(<p className= "title-container__subtitle"> Event Start: {month + '-' + day + '-' + year + " at " + time + ':00 am'} </p>)}
-						      	{this.props.location.state.defined && pm &&(<p className= "title-container__subtitle"> Event Start: {month + '-' + day + '-' + year + " at " + time + ':00 pm'} </p>)}
-						      	{this.props.location.state.defined && (<p className= "title-container__subtitle"> Description: {desc} </p>)}
-						      	{this.props.location.state.defined && (<MapC ltlg={latlng} />)}
-						      	{!(this.props.location.state.defined) && (<p className= "title-container__subtitle"> Please return to the homepage and search for an event first!</p>)}
-	        				</div>
+        					<h1 className= "title-container__title">Event Information</h1>
+					      	{this.props.location.state.defined && (<p className= "title-container__subtitle"> Event Title: {this.props.location.state.data.results[this.props.location.state.event].title} </p>)}
+					      	{this.props.location.state.defined && !pm &&(<p className= "title-container__subtitle"> Event Start: {month + '-' + day + '-' + year + " at " + time + ':00 am'} </p>)}
+					      	{this.props.location.state.defined && pm &&(<p className= "title-container__subtitle"> Event Start: {month + '-' + day + '-' + year + " at " + time + ':00 pm'} </p>)}
+					      	{this.props.location.state.defined && (<p className= "title-container__subtitle"> Description: {desc} </p>)}
+					      	{this.props.location.state.defined && (<MapC ltlg={latlng} />)}
+					      	{!(this.props.location.state.defined) && (<p className= "title-container__subtitle"> Please return to the homepage and search for an event first!</p>)}
 	        			</div>
 	        		</div>
 	        	</div>
