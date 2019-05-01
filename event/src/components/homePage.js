@@ -13,7 +13,7 @@ import Background from "./FestUp_Background.png"
 
 var sectionStyle = {
 	width: "100%",
-	height: "800px",
+	height: "1000px",
 	backgroundImage: `url(${Background})`
 }
 
@@ -93,7 +93,7 @@ class homePage extends React.Component {
 		e.preventDefault();
 		const title = e.target.elements.title.value;
 
-		const apiCall = await fetch(`https://api.predicthq.com/v1/events/?category=concerts&q=${title}`, {
+		const apiCall = await fetch(`https://api.predicthq.com/v1/events/?category=concerts&q=${title}&start_around.origin=2019-5-10`, {
 			headers: {
 				'Authorization': 'Bearer Bfh98sVa9jZRULfeE4I78zPzjzMUON'
 			}
@@ -138,22 +138,34 @@ class homePage extends React.Component {
 	  render(){
 	    return(
 	      <div>
-			<section style = {sectionStyle} >
-			<Navigate/> 
-	        <Titles/>
-	        <br/>
-	        <p>Search by Location:</p>
-	        <Forms getEvents={this.getEvents}/>
-	        <br/>
-	        <p>Search by Event Title:</p>
-	        <FormsTwo getEventsTitle={this.getEventsTitle}/>
-	        { this.state.showEvents && (<Fest titles={this.state.titles} data={this.state.data}/>)}
-	        { this.state.showErrorLocation && (<p>Please Enter a City/State</p>)}
-	        { this.state.showErrorTitle && (<p>Please Enter an Event Title</p>)}
-			</section>
+	        <div className="wrapper">
+	        	<div className="main">
+	        	<Navigate/> 
+	        		<div className="container">
+	        			<div className="row">
+	        				<div className=".col-xs-5.title-container">
+	        					<Titles/>
+	        				</div>
+	        				<div className=".col-xs-5.title-container">
+	        					<p className= "title-container__subtitle">Search by Location:</p>
+						        <Forms getEvents={this.getEvents}/>
+						        <br/>
+						        <p className= "title-container__subtitle">Search by Event Title:</p>
+						        <FormsTwo getEventsTitle={this.getEventsTitle}/>
+						        { this.state.showEvents && (<Fest titles={this.state.titles} data={this.state.data}/>)}
+						        { this.state.showErrorLocation && (<p>Please Enter a City/State</p>)}
+						        { this.state.showErrorTitle && (<p>Please Enter an Event Title</p>)}
+	        				</div>
+	        			</div>
+	        		</div>
+	        	</div>
+	        </div>
 	      </div>
 	      );
 	  }
 };
 
 export default homePage;
+
+
+	
