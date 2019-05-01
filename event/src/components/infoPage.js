@@ -65,6 +65,7 @@ class infoPage extends React.Component {
 	        			</div>
 	        		</div>
 	        	</div>
+				<Weather location={this.props.location} i={0}/>
 	        </div>
 	      </div>
 	      );

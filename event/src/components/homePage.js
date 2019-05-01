@@ -33,10 +33,10 @@ class homePage extends React.Component {
 		this.getEvents = this.getEvents.bind(this);
 		this.getEventsTitle = this.getEventsTitle.bind(this);
 	}
-	
+
 	async getWeather(e) {
 		e.preventDefault(); //stops page from reloading
-		
+
 
 	}
 
@@ -86,7 +86,7 @@ class homePage extends React.Component {
 				showErrorTitle: false
 			})
 		}
-		
+
 	}
 
 	async getEventsTitle(e){
@@ -99,7 +99,7 @@ class homePage extends React.Component {
 			}
 		});
 		const data = await apiCall.json();
-		
+
 		if(title === ''){
 			this.setState({showErrorTitle: true, showErrorLocation: false, showEvents: false, data: data})
 
@@ -133,14 +133,14 @@ class homePage extends React.Component {
 
 	}
 
-	
+
 
 	  render(){
 	    return(
 	      <div>
 	        <div className="wrapper">
 	        	<div className="main">
-	        	<Navigate/> 
+	        	<Navigate/>
 	        		<div className="container">
 	        			<div className="row">
 	        					<Titles/>
@@ -162,6 +162,3 @@ class homePage extends React.Component {
 };
 
 export default homePage;
-
-
-	
