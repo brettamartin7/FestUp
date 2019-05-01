@@ -33,7 +33,7 @@ class Fest extends React.Component{
 		return(
 			<div>
 				{ this.renderRedirect() }
-				<h1> Select an event from the list below to receive more information! </h1>
+				<p className= "title-container__subtitle"> Select an event from the list below to receive more information! </p>
 				<ul>
 					<li onClick={() => this.getInfo(0)}>{this.props.titles[0]}</li>
 					<li onClick={() => this.getInfo(1)}>{this.props.titles[1]}</li>
@@ -43,8 +43,6 @@ class Fest extends React.Component{
 					<li onClick={() => this.getInfo(5)}>{this.props.titles[5]}</li>
 					<li onClick={() => this.getInfo(6)}>{this.props.titles[6]}</li>
 					<li onClick={() => this.getInfo(7)}>{this.props.titles[7]}</li>
-					<li onClick={() => this.getInfo(8)}>{this.props.titles[8]}</li>
-					<li onClick={() => this.getInfo(9)}>{this.props.titles[9]}</li>
 				</ul>
 			</div>
 			)

@@ -2,6 +2,7 @@ import React from "react"
 import Titles from "./Titles"
 import Fest from "./Fest"
 import Forms from "./Forms"
+import FormsTwo from "./FormsTwo"
 import Navigate from "./Navigate"
 import Background from "./FestUp_Background.png"
 
@@ -12,7 +13,7 @@ import Background from "./FestUp_Background.png"
 
 var sectionStyle = {
 	width: "100%",
-	height: "800px",
+	height: "1000px",
 	backgroundImage: `url(${Background})`
 }
 
@@ -21,7 +22,8 @@ class homePage extends React.Component {
 		titles: [],
 		data: undefined,
 		showEvents: false,
-		showError: false
+		showErrorLocation: false,
+		showErrorTitle: false
 	}
 
 
@@ -29,6 +31,7 @@ class homePage extends React.Component {
 		super(props);
 		this.getWeather = this.getWeather.bind(this);
 		this.getEvents = this.getEvents.bind(this);
+		this.getEventsTitle = this.getEventsTitle.bind(this);
 	}
 	
 	async getWeather(e) {
@@ -46,7 +49,7 @@ class homePage extends React.Component {
 		let lat = locationData.results[0].locations[0].latLng.lat;
 		let lng = locationData.results[0].locations[0].latLng.lng;
 
-		const apiCall = await fetch(`https://api.predicthq.com/v1/events/?category=concerts&location_around.origin=${lat},${lng}&start_around.origin=2019-4-30`, {
+		const apiCall = await fetch(`https://api.predicthq.com/v1/events/?category=concerts&location_around.origin=${lat},${lng}&start_around.origin=2019-5-07`, {
 			headers: {
 				'Authorization': 'Bearer Bfh98sVa9jZRULfeE4I78zPzjzMUON'
 			}
@@ -55,7 +58,7 @@ class homePage extends React.Component {
 		//console.log(locationData);
 		//console.log(data);
 		if(city === '' || state === ''){
-			this.setState({showError: true, showEvents: false, data: data})
+			this.setState({showErrorLocation: true, showErrorTitle: false, showEvents: false, data: data})
 
 		}
 		else{
@@ -79,10 +82,55 @@ class homePage extends React.Component {
 			this.setState({
 				titles: this.state.titles.concat(updated), //update array
 				showEvents: true,
-				showError: false
+				showErrorLocation: false,
+				showErrorTitle: false
 			})
 		}
 		
+	}
+
+	async getEventsTitle(e){
+		e.preventDefault();
+		const title = e.target.elements.title.value;
+
+		const apiCall = await fetch(`https://api.predicthq.com/v1/events/?category=concerts&q=${title}&start_around.origin=2019-5-10`, {
+			headers: {
+				'Authorization': 'Bearer Bfh98sVa9jZRULfeE4I78zPzjzMUON'
+			}
+		});
+		const data = await apiCall.json();
+		
+		if(title === ''){
+			this.setState({showErrorTitle: true, showErrorLocation: false, showEvents: false, data: data})
+
+		}
+		else{
+			this.setState({
+			titles: [], //clear array
+			data: data
+			})
+
+			let updated = [data.results[0].title,
+				data.results[1].title,
+				data.results[2].title,
+				data.results[3].title,
+				data.results[4].title,
+				data.results[5].title,
+				data.results[6].title,
+				data.results[7].title,
+				data.results[8].title,
+				data.results[9].title
+				]
+
+			this.setState({
+				titles: this.state.titles.concat(updated), //update array
+				showEvents: true,
+				showErrorLocation: false,
+				showErrorTitle: false
+			})
+		}
+
+
 	}
 
 	
@@ -90,16 +138,30 @@ class homePage extends React.Component {
 	  render(){
 	    return(
 	      <div>
-					<section style = {sectionStyle} >
-					<Navigate/> 
-	        <Titles/>
-	        <Forms getEvents={this.getEvents}/>
-	        { this.state.showEvents && (<Fest titles={this.state.titles} data={this.state.data}/>)}
-	        { this.state.showError && (<p>Please Enter a City/State</p>)}
-					</section>
+	        <div className="wrapper">
+	        	<div className="main">
+	        	<Navigate/> 
+	        		<div className="container">
+	        			<div className="row">
+	        					<Titles/>
+	        					<p className= "title-container__subtitle">Search by Location:</p>
+						        <Forms getEvents={this.getEvents}/>
+						        <br/>
+						        <p className= "title-container__subtitle">Search by Event Title:</p>
+						        <FormsTwo getEventsTitle={this.getEventsTitle}/>
+						        { this.state.showEvents && (<Fest titles={this.state.titles} data={this.state.data}/>)}
+						        { this.state.showErrorLocation && (<p>Please Enter a City/State</p>)}
+						        { this.state.showErrorTitle && (<p>Please Enter an Event Title</p>)}
+	        			</div>
+	        		</div>
+	        	</div>
+	        </div>
 	      </div>
 	      );
 	  }
 };
 
 export default homePage;
+
+
+	
