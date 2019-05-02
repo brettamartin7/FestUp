@@ -1,6 +1,7 @@
 import React from "react"
 import Navigate from "./Navigate"
 import MapC from "./MapC"
+import Weather from "./Weather"
 
 
 
@@ -64,12 +65,13 @@ class infoPage extends React.Component {
 					      	{this.props.location.state.defined && pm &&(<p className= "title-container__subtitle"> Event Start: {month + '-' + day + '-' + year + " at " + time + ':00 pm'} </p>)}
 					      	{this.props.location.state.defined && (<p className= "title-container__subtitle"> Description: {desc} </p>)}		
 					      	{!(this.props.location.state.defined) && (<p className= "title-container__subtitle"> Please return to the homepage and search for an event first!</p>)}
+					      	{this.props.location.state.defined && <Weather location={this.props.location} i={0}/>}
 	                </div>
 	                <div className="col-xs-6 map-container">
 	                  		{this.props.location.state.defined && (<MapC ltlg={latlng} />)}
 	                </div>
 									<div className="col-xs-6 spotify-container">
-												{this.props.location.state.defined && 
+													{this.props.location.state.defined && 
 													(<iframe title="spotify" src="https://open.spotify.com/embed/album/3Mj4A4nNJzIdxOyS4yzOhj" width="300" 
 													height="300" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>)}
 									</div>
