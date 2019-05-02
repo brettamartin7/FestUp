@@ -66,10 +66,10 @@ class infoPage extends React.Component {
 	                <div className="col-xs-6 map-container">
 	                  		{this.props.location.state.defined && (<MapC ltlg={latlng} />)}
 	                </div>
-					<Weather location={this.props.location} i={0}/>
 	              </div>
 	            </div>
 	          </div>
+			  <Weather location={this.props.location} i={0}/>
 	        </div>
 	      </div>
 	      );
